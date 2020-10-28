@@ -7,8 +7,8 @@ const bodyParser = require("body-parser");
 const { send } = require("process");
 
 const app = express();
-// const hostname = "127.0.0.1";
-// const port = 8000;
+const hostname = "127.0.0.1";
+const port = 8000;
 
 app.use(cors());
 app.use(bodyParser.json());
@@ -48,9 +48,9 @@ app.post("/", (error, req, res) => {
 export { server };
 export default app;
 
-// app.get("/", (req, res) => {
-//   res.send("Hello world!");
-// });
+app.get("/", (req, res) => {
+  res.send("Hello world!");
+});
 
 // app.listen(port, hostname, () => {
 //   console.log(`Example app listening on port ${port}!`);
