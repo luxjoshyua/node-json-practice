@@ -10,7 +10,7 @@ const app = express();
 
 // make sure listening on the correct port for local dev
 const hostname = "127.0.0.1";
-const port = 8000;
+const port = process.env.PORT || 8000;
 
 app.use(cors());
 app.use(bodyParser.json());
