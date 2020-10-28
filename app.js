@@ -15,48 +15,44 @@ const port = process.env.PORT || 8000;
 app.use(cors());
 app.use(bodyParser.json());
 
-// const server = http.createServer(app);
+const server = http.createServer(app);
 
 // routing http post request to the specified path with the specified callback function
-// app.post("/", (error, req, res) => {
-//   // setup error handling
-//   res.status(error.status || 400).send({
-//     error: {
-//       status: error.status || 400,
-//       message: "Could not decode request",
-//     },
-//   });
+app.post("/", (error, req, res) => {
+  // setup error handling
+  res.status(error.status || 400).send({
+    error: {
+      status: error.status || 400,
+      message: "Could not decode request",
+    },
+  });
 
-//   // contains key value pairs of data submitted in the request body
-//   const { payload } = req.body;
-//   // empty array to populate with correct data
-//   const filteredShows = [];
-//   // loop through the payload, first pass the checks, then push into new filteredShows array
-//   payload.forEach(({ drm, episodeCount, image, slug, title }) => {
-//     if (drm === true && episodeCount > 0) {
-//       filteredShows.push({
-//         image: image.showImage,
-//         slug,
-//         title,
-//       });
-//     }
-//   });
-//   // set the json response to be new filtered array
-//   res.json({
-//     response: filteredShows,
-//   });
-// });
+  // contains key value pairs of data submitted in the request body
+  const { payload } = req.body;
+  // empty array to populate with correct data
+  const filteredShows = [];
+  // loop through the payload, first pass the checks, then push into new filteredShows array
+  payload.forEach(({ drm, episodeCount, image, slug, title }) => {
+    if (drm === true && episodeCount > 0) {
+      filteredShows.push({
+        image: image.showImage,
+        slug,
+        title,
+      });
+    }
+  });
+  // set the json response to be new filtered array
+  res.json({
+    response: filteredShows,
+  });
+});
 
-// export { server };
-// export default app;
+export { server };
+export default app;
 
 app.get("/", (req, res) => {
   res.send("Hello world, I'm working up in here!!");
 });
-
-// app.listen(port, hostname, () => {
-//   console.log(`Example app listening on port ${port}!`);
-// });
 
 // app.listen(process.env.PORT || 8000, () => {
 //   console.log(`Example app listening on port ${port}!`);
