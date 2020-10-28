@@ -10,7 +10,7 @@ const app = express();
 
 // make sure listening on the correct port for local dev
 // const hostname = "127.0.0.1";
-// const port = process.env.PORT || 8000;
+const port = process.env.PORT || 8000;
 
 app.use(cors());
 app.use(bodyParser.json());
@@ -20,12 +20,12 @@ const server = http.createServer(app);
 // routing http post request to the specified path with the specified callback function
 app.post("/", (error, req, res) => {
   // setup error handling
-  // res.status(error.status || 400).send({
-  //   error: {
-  //     status: error.status || 400,
-  //     message: "Could not decode request",
-  //   },
-  // });
+  res.status(error.status || 400).send({
+    error: {
+      status: error.status || 400,
+      message: "Could not decode request",
+    },
+  });
 
   // contains key value pairs of data submitted in the request body
   const { payload } = req.body;
@@ -50,17 +50,13 @@ app.post("/", (error, req, res) => {
 // export { server };
 // export default app;
 
-// app.get("/", (req, res) => {
-//   res.send("Hello world, I'm working up in here!!");
-// });
+app.get("/", (req, res) => {
+  res.send("Hello world, I'm working up in here!!");
+});
 
-// app.listen(process.env.PORT || 8000, () => {
-//   console.log(`Example app listening on port ${port}!`);
-// });
-
-// app.listen(port, () => {
-//   console.log(`Example app listening on port ${port}!`);
-// });
+app.listen(port, () => {
+  console.log(`Example app listening on port ${port}!`);
+});
 
 // dummy request
 // fetch("http://localhost:3000", {
