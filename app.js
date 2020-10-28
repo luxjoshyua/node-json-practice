@@ -47,7 +47,7 @@ app.post("/", (error, req, res) => {
   });
 });
 
-export { server };
+// export { server };
 export default app;
 
 // app.get("/", (req, res) => {
