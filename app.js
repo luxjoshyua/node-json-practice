@@ -9,8 +9,8 @@ const { send } = require("process");
 const app = express();
 
 // make sure listening on the correct port for local dev
-const hostname = "127.0.0.1";
-const port = process.env.PORT || 8000;
+// const hostname = "127.0.0.1";
+// const port = process.env.PORT || 8000;
 
 app.use(cors());
 app.use(bodyParser.json());
@@ -50,17 +50,17 @@ app.post("/", (error, req, res) => {
 export { server };
 export default app;
 
-app.get("/", (req, res) => {
-  res.send("Hello world, I'm working up in here!!");
-});
+// app.get("/", (req, res) => {
+//   res.send("Hello world, I'm working up in here!!");
+// });
 
 // app.listen(process.env.PORT || 8000, () => {
 //   console.log(`Example app listening on port ${port}!`);
 // });
 
-app.listen(port, () => {
-  console.log(`Example app listening on port ${port}!`);
-});
+// app.listen(port, () => {
+//   console.log(`Example app listening on port ${port}!`);
+// });
 
 // dummy request
 // fetch("http://localhost:3000", {
