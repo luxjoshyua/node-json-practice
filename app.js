@@ -54,7 +54,11 @@ app.get("/", (req, res) => {
   res.send("Hello world, I'm working up in here!!");
 });
 
-app.listen(port, hostname, () => {
+// app.listen(port, hostname, () => {
+//   console.log(`Example app listening on port ${port}!`);
+// });
+
+app.listen(process.env.PORT || 8000, () => {
   console.log(`Example app listening on port ${port}!`);
 });
 
