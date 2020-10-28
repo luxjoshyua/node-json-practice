@@ -58,11 +58,15 @@ app.get("/", (req, res) => {
 //   console.log(`Example app listening on port ${port}!`);
 // });
 
-app.listen(process.env.PORT || 8000, () => {
+// app.listen(process.env.PORT || 8000, () => {
+//   console.log(`Example app listening on port ${port}!`);
+// });
+
+app.listen(port, () => {
   console.log(`Example app listening on port ${port}!`);
 });
 
-//THIS IS A DUMMY REQUEST THAT THEY WILL SEND YOU
+// dummy request
 // fetch("http://localhost:3000", {
 //   method: "POST",
 //   headers: {
