@@ -50,9 +50,9 @@ app.post("/", (error, req, res) => {
 // export { server };
 // export default app;
 
-// app.get("/", (req, res) => {
-//   res.send("Hello world, I'm working up in here!!");
-// });
+app.get("/", (req, res) => {
+  res.send("Hello world, I'm working up in here!!");
+});
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}!`);
