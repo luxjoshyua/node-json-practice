@@ -15,10 +15,13 @@ const port = process.env.PORT || 8000;
 app.use(cors());
 app.use(bodyParser.json());
 
-// const server = http.createServer(app);
+const server = http.createServer(app);
 
 // routing http post request to the specified path with the specified callback function
 app.post("/", (error, req, res) => {
+  // set the content type to be json
+  res.set("Content-Type", "applicaton/json");
+
   // setup error handling
   res.status(error.status || 400).send({
     error: {
@@ -41,6 +44,7 @@ app.post("/", (error, req, res) => {
       });
     }
   });
+
   // set the json response to be new filtered array
   res.json({
     response: filteredShows,
