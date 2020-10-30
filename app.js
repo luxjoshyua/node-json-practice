@@ -32,7 +32,17 @@ app.post("/", (error, req, res) => {
   // contains key value pairs of data submitted in the request body
   const { payload } = req.body;
   // empty array to populate with correct data
-  const dummyEmptyArray = [];
+  const filteredShows = [];
+  // loop through the payload, first pass the checks, then push into new filteredShows array
+  payload.forEach(({ drm, episodeCount, image, slug, title }) => {
+    if (drm === true && episodeCount > 0) {
+      filteredShows.push({
+        image: image.showImage,
+        slug,
+        title,
+      });
+    }
+  });
 
   // set the json response to be new filtered array
   res.json({
