@@ -7,27 +7,25 @@ const { send } = require("process");
 
 const app = express();
 
-// make sure listening on the correct port for local dev
-// const hostname = "127.0.0.1";
 const port = process.env.PORT || 8000;
-
 app.use(cors());
+// parse the response to json
 app.use(bodyParser.json());
 
 const server = http.createServer(app);
 
 // routing http post request to the specified path with the specified callback function
-app.post("/", (error, req, res) => {
+app.post("/", (req, res) => {
   // set the content type to be json
   res.set("Content-Type", "applicaton/json");
 
   // setup error handling
-  res.status(error.status || 400).send({
-    error: {
-      status: error.status || 400,
-      message: "Could not decode request",
-    },
-  });
+  // res.status(error.status || 400).send({
+  //   error: {
+  //     status: error.status || 400,
+  //     message: "Could not decode request",
+  //   },
+  // });
 
   // contains key value pairs of data submitted in the request body
   const { payload } = req.body;
