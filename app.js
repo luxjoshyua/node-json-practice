@@ -19,12 +19,12 @@ app.post("/", (error, req, res) => {
   // set the content type to be json
   res.setHeader("Content-Type", "application/json");
 
-  if (error) {
-    res.setHeader("Content-Type", "application/json");
-    res
-      .status(400)
-      .json({ error: { msg: `Could not decode request`, stack: e.stack } });
-  }
+  // if (error) {
+  //   res.setHeader("Content-Type", "application/json");
+  //   res
+  //     .status(400)
+  //     .json({ error: { msg: `Could not decode request`, stack: e.stack } });
+  // }
 
   // contains key value pairs of data submitted in the request body
   const { payload } = req.body;
