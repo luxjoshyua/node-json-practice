@@ -51,7 +51,6 @@ app.post("/", (req, res) => {
 // export default app;
 
 app.use((error, req, res) => {
-  res.status(400);
   // res.json({ message: error.message });
   // res.status(400).json({error: {msg: e.message, stack: e.stack}});
   res.status(400).json({ error: { msg: `Could not decode request` } });
