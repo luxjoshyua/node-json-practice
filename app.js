@@ -15,17 +15,16 @@ app.use(bodyParser.json());
 const server = http.createServer(app);
 
 // routing http post request to the specified path with the specified callback function
-app.post("/", (req, res) => {
+app.post("/", (error, req, res) => {
   // set the content type to be json
   res.setHeader("Content-Type", "application/json");
 
-  // setup error handling
-  // res.status(error.status || 400).send({
-  //   error: {
-  //     status: error.status || 400,
-  //     message: "Could not decode request",
-  //   },
-  // });
+  if (error) {
+    res.setHeader("Content-Type", "application/json");
+    res
+      .status(400)
+      .json({ error: { msg: `Could not decode request`, stack: e.stack } });
+  }
 
   // contains key value pairs of data submitted in the request body
   const { payload } = req.body;
