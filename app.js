@@ -50,10 +50,10 @@ app.post("/", (req, res) => {
 // export { server };
 // export default app;
 
-app.use((error, req, res) => {
+app.use((error, req, res, next) => {
   // res.json({ message: error.message });
   // res.status(400).json({error: {msg: e.message, stack: e.stack}});
-  res.status(400).json({ error: { msg: `Could not decode request` } });
+  res.status(400).json({ error: `Could not decode request` });
   res.setHeader("Content-Type", "application/json");
 });
 
