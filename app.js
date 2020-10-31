@@ -17,7 +17,7 @@ const server = http.createServer(app);
 // routing http post request to the specified path with the specified callback function
 app.post("/", (req, res) => {
   // set the content type to be json
-  res.set("Content-Type", "applicaton/json");
+  res.setHeader("Content-Type", "application/json");
 
   // setup error handling
   // res.status(error.status || 400).send({
