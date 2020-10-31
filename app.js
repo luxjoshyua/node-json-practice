@@ -15,7 +15,7 @@ app.use(bodyParser.json());
 const server = http.createServer(app);
 
 // routing http post request to the specified path with the specified callback function
-app.post("/", (error, req, res) => {
+app.post("/", (req, res) => {
   // set the content type to be json
   res.setHeader("Content-Type", "application/json");
 
