@@ -1,7 +1,6 @@
 // import express from "express";
 const express = require("express");
 const cors = require("cors");
-// const http = require("http");
 const bodyParser = require("body-parser");
 const { send } = require("process");
 const app = express();
@@ -10,9 +9,7 @@ const port = process.env.PORT || 8000;
 app.use(cors());
 // parse the response to json
 app.use(bodyParser.json());
-// const server = http.createServer(app);
 
-// routing http post request to the specified path with the specified callback function
 app.post("/", (req, res) => {
   // set the content type to be json
   res.setHeader("Content-Type", "application/json");
