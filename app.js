@@ -1,31 +1,21 @@
 // import express from "express";
 const express = require("express");
 const cors = require("cors");
-const http = require("http");
+// const http = require("http");
 const bodyParser = require("body-parser");
 const { send } = require("process");
-
 const app = express();
-
+// set dynamic port for heroku deployment
 const port = process.env.PORT || 8000;
 app.use(cors());
 // parse the response to json
 app.use(bodyParser.json());
-
-const server = http.createServer(app);
+// const server = http.createServer(app);
 
 // routing http post request to the specified path with the specified callback function
 app.post("/", (req, res) => {
   // set the content type to be json
   res.setHeader("Content-Type", "application/json");
-
-  // if (error) {
-  //   res.setHeader("Content-Type", "application/json");
-  //   res
-  //     .status(400)
-  //     .json({ error: { msg: `Could not decode request`, stack: e.stack } });
-  // }
-
   // contains key value pairs of data submitted in the request body
   const { payload } = req.body;
   // empty array to populate with correct data
@@ -40,19 +30,13 @@ app.post("/", (req, res) => {
       });
     }
   });
-
   // set the json response to be new filtered array
   res.json({
     response: filteredShows,
   });
 });
 
-// export { server };
-// export default app;
-
 app.use((error, req, res, next) => {
-  // res.json({ message: error.message });
-  // res.status(400).json({error: {msg: e.message, stack: e.stack}});
   res.status(400).json({ error: `Could not decode request` });
   res.setHeader("Content-Type", "application/json");
 });
